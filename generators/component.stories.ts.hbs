@@ -1,0 +1,20 @@
+import { Story } from '@storybook/vue3'
+
+import {{pascalCase componentName}} from './{{ snakeCase componentName }}.vue'
+
+export default {
+  title: 'components/{{pascalCase componentName}}',
+  component: {{pascalCase componentName}}
+}
+
+const Template: Story = (args) => ({
+  components: { {{pascalCase componentName}} },
+  setup() {
+    return { args }
+  },  
+  template: '<{{kebabCase componentName}} v-bind="args" />'
+})
+
+export const DefaultState = Template.bind({})
+DefaultState.args = {}
+
