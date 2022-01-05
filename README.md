@@ -1,6 +1,16 @@
 # Vue3 TS Boilerplate
 
-This template should help get you started developing with Vue 3/TS in Vite.
+- vue3
+- typescript
+- pinia for state mgmt
+- vue-router
+- eslint
+- prettier
+- storybook
+- unit tests/code cov (vitest & testing library)
+- generators (plop)
+
+testing & storybook examples: `src/components/examples`
 
 ## Project Setup
 
