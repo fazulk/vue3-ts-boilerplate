@@ -1,6 +1,7 @@
 {
   "name": "vue3-ts-boilerplate",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -22,15 +23,14 @@
     "@types/react": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.1.1.tgz"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.4",
-    "@storybook/addon-actions": "^6.5.0-alpha.4",
-    "@storybook/addon-essentials": "^6.5.0-alpha.4",
-    "@storybook/addon-interactions": "^6.5.0-alpha.4",
-    "@storybook/addon-links": "^6.5.0-alpha.4",
+    "@storybook/addon-actions": "^6.5.0-alpha.7",
+    "@storybook/addon-essentials": "^6.5.0-alpha.7",
+    "@storybook/addon-interactions": "^6.5.0-alpha.7",
+    "@storybook/addon-links": "^6.5.0-alpha.7",
     "@storybook/jest": "^0.0.5",
     "@storybook/testing-library": "^0.0.7",
     "@storybook/testing-vue3": "^0.0.1",
-    "@storybook/vue3": "^6.5.0-alpha.4",
+    "@storybook/vue3": "^6.5.0-alpha.7",
     "@testing-library/vue": "^6.4.2",
     "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
@@ -46,6 +46,7 @@
     "happy-dom": "^2.25.1",
     "plop": "^3.0.5",
     "prettier": "^2.5.1",
+    "storybook-builder-vite": "^0.1.13",
     "typescript": "^4.5.4",
     "vite": "^2.7.10",
     "vitest": "^0.0.131",
