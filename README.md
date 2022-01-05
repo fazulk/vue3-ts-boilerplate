@@ -1,6 +1,6 @@
-## Vue3 TS Boilerplate
+# Vue3 TS Boilerplate
 
-This template should help get you started developing with Vue 3 in Vite.
+This template should help get you started developing with Vue 3/TS in Vite.
 
 ## Project Setup
 
@@ -8,45 +8,44 @@ This template should help get you started developing with Vue 3 in Vite.
 yarn
 ```
 
-### Compile and Hot-Reload for Development
+## Compile and Hot-Reload for Development
 
 ```sh
 yarn dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Type-Check, Compile and Minify for Production
 
 ```sh
 yarn build
 ```
 
-### Deploy
+## Deploy
 
 ```sh
 .. coming soon ..
 ```
 
-### Storybook
+## Storybook
 
-##### With interaction testing
+With interaction testing
 
 ```sh
 yarn storybook
 ```
 
-### Unit Tests
+## Unit Tests
 
-##### Using Vitest.
+Using Vitest
 
 ```sh
 yarn test
 ```
 
-### Generate new files
+## Generate new files
 
-##### Create new Components/Views/Stores
-
-##### By default adds a unit test and includes option to add story.
+Create new Components/Views/Stores  
+By default adds a unit test and includes option to add story.
 
 ```sh
 yarn generate
