@@ -1,4 +1,6 @@
-# Vue3 TS Boilerplate
+# Vue3 TS Boilerplate (slim)
+
+The goal of this project is to effectively add minimal dependencies that actually work for the vue/ts/vite ecosystem. No `insane` animation libraries here!
 
 - vue3
 - typescript
