@@ -1,9 +1,15 @@
 /// <reference types="vitest" />
+import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    legacy({
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // needed for IE11
+    })
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
