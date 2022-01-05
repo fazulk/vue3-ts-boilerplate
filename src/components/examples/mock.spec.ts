@@ -1,10 +1,8 @@
 /* eslint-disable no-empty */
-import assert from 'assert'
-
 export default {}
 describe('mock', () => {
   it('basic', () => {
-    const fn = jest.fn()
+    const fn = vitest.fn()
 
     expect(fn).toBe
 
@@ -32,7 +30,7 @@ describe('mock', () => {
   })
 
   it('toHaveBeenCalledWith', () => {
-    const fn = jest.fn()
+    const fn = vitest.fn()
 
     fn('Hi', 2)
 
@@ -42,7 +40,7 @@ describe('mock', () => {
   it('returns', () => {
     let i = 0
 
-    const fn = jest.fn(() => String(++i))
+    const fn = vitest.fn(() => String(++i))
 
     expect(fn).not.toHaveReturned()
 
@@ -63,7 +61,7 @@ describe('mock', () => {
   it('throws', () => {
     let i = 0
 
-    const fn = jest.fn(() => {
+    const fn = vitest.fn(() => {
       if (i === 1) {
         ++i
         throw new Error('error')

@@ -19,7 +19,7 @@
     "incremental": false,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "types": ["jest"]
+    "types": ["vitest/global"]
   },
   "include": ["vite.config.*", "env.d.ts", "src/**/*", "src/**/*.vue"]
 }
