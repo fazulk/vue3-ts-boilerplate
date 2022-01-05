@@ -1,18 +1,11 @@
-import { composeStories } from '@storybook/testing-vue3'
 import { render } from '@testing-library/vue'
 
-import * as stories from './{{ snakeCase componentName }}.stories'
-
-const { DefaultState } = composeStories(stories)
+import {{pascalCase componentName}} from './{{ snakeCase componentName }}.vue'
 
 describe('{{titleCase componentName}}', () => {
   it('Displays {{pascalCase componentName}}', async () => {
-    expect(DefaultState()).toBeTruthy()
+    const { getByText } = render({{pascalCase componentName}})
 
-    const wrapper = render(DefaultState())
-
-    const { getByText } = wrapper
-
-    expect(getByText('{{pascalCase componentName}}').textContent).toBeTruthy()
+    expect(getByText('{{pascalCase componentName}}').textContent).falsy()
   })
 })

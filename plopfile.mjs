@@ -37,6 +37,12 @@ export default function (plop) {
               name: 'subPath',
               default: false,
               message: 'Install in sub directory?'
+            },
+            {
+              type: 'confirm',
+              name: 'addStory',
+              default: false,
+              message: 'Add Story?'
             }
             /* Pass your questions in here */
           ])
@@ -67,18 +73,29 @@ export default function (plop) {
             type: 'add',
             path: `src/${initialDir}/${subPath()}{{snakeCase componentName}}.vue`,
             templateFile: 'generators/component.vue.hbs'
-          },
-          {
-            type: 'add',
-            path: `src/${initialDir}/${subPath()}{{snakeCase componentName}}.stories.ts`,
-            templateFile: 'generators/component.stories.ts.hbs'
-          },
-          {
+          }
+        ]
+
+        if (data.addStory)
+          actions.push(
+            {
+              type: 'add',
+              path: `src/${initialDir}/${subPath()}{{snakeCase componentName}}.stories.ts`,
+              templateFile: 'generators/component.stories.ts.hbs'
+            },
+            {
+              type: 'add',
+              path: `src/${initialDir}/${subPath()}{{snakeCase componentName}}.test.ts`,
+              templateFile: 'generators/component.test-story.ts.hbs'
+            }
+          )
+        else
+          actions.push({
             type: 'add',
             path: `src/${initialDir}/${subPath()}{{snakeCase componentName}}.test.ts`,
             templateFile: 'generators/component.test.ts.hbs'
-          }
-        ]
+          })
+
         return actions
       }
     })
