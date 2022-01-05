@@ -1,5 +1,27 @@
 export default function (plop) {
-  function buildBase(name, initialDir) {
+  plop.setGenerator('Add new store', {
+    description: 'Adds new store with unit tests',
+    prompts: [
+      {
+        type: 'input',
+        name: 'storeId',
+        message: 'Name/Id of store?'
+      }
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: 'src/stores/{{snakeCase storeId}}.ts',
+        templateFile: 'generators/store.ts.hbs'
+      },
+      {
+        type: 'add',
+        path: 'src/stores/{{snakeCase storeId}}.test.ts',
+        templateFile: 'generators/store.test.ts.hbs'
+      }
+    ]
+  })
+  function buildBaseForComponentViews(name, initialDir) {
     plop.setGenerator(`Add ${name}`, {
       description: `Add ${name} with story and tests`,
       prompts: async function (inquirer) {
@@ -62,6 +84,6 @@ export default function (plop) {
     })
   }
 
-  buildBase('view', 'views')
-  buildBase('component', 'components')
+  buildBaseForComponentViews('view', 'views')
+  buildBaseForComponentViews('component', 'components')
 }

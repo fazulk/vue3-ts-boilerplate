@@ -1,0 +1,16 @@
+import { createPinia, setActivePinia } from 'pinia'
+
+import { use{{camelCase storeId}}Store } from './{{snakeCase storeId}}'
+
+describe('{{titleCase storeId}} Store', () => {
+  beforeEach(() => {    
+    setActivePinia(createPinia())
+  })
+
+  it('increments', () => {
+    const {{camelCase storeId}} = use{{camelCase storeId}}Store()
+    expect({{camelCase storeId}}.someValue).toBe(0)
+    {{camelCase storeId}}.increment(1)
+    expect({{camelCase storeId}}.someValue).toBe(1)
+  })  
+})

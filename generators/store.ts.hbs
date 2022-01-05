@@ -1,0 +1,16 @@
+import { defineStore } from 'pinia'
+
+export const use{{camelCase storeId}}Store = defineStore({
+  id: '{{camelCase storeId}}',
+  state: () => ({
+    someValue: 0
+  }),
+  getters: {
+    doubleValue: (state) => state.someValue * 2
+  },
+  actions: {
+    increment(inc: number) {
+      this.someValue += inc
+    }
+  }
+})
