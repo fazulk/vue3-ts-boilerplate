@@ -14,6 +14,9 @@ testing & storybook examples: `src/components/examples`
 
 ## Project Setup
 
+use yarn  
+node 16
+
 ```sh
 yarn
 ```
