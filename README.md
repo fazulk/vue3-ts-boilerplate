@@ -46,7 +46,7 @@ yarn test
 
 ##### Create new Components/Views/Stores
 
-##### Has the option to also add tests and/or stories.
+##### By default adds a unit test and includes option to add story.
 
 ```sh
 yarn generate
