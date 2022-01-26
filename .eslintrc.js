@@ -24,8 +24,6 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'multiline-ternary': ['warn', 'always-multiline'],
-    'no-console': 'off',
-    'no-debugger': 'off',
     quotes: ['error', 'single', 'avoid-escape'],
     'vue/array-bracket-spacing': 'error',
     'vue/arrow-spacing': 'error',
@@ -43,7 +41,6 @@ module.exports = {
     'vue/space-infix-ops': 'error',
     'vue/space-unary-ops': 'error',
     'vue/v-on-function-call': 'error',
-    'no-explicit-any': 'off',
     'vue/multi-word-component-names': 'off'
   }
 }

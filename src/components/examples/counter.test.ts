@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/testing-vue3'
+import { composeStories } from '@fazulk/testing-vue3'
 import { fireEvent, render, screen } from '@testing-library/vue'
 
 import * as stories from './counter.stories'

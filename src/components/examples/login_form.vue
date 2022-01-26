@@ -8,7 +8,8 @@ export default defineComponent({
       default: 'Title Goes Here'
     }
   },
-  setup() {
+  emits: ['submit'],
+  setup(props, { emit }) {
     const user = reactive({
       password: '',
       email: ''
@@ -20,6 +21,7 @@ export default defineComponent({
     })
 
     const submit = () => {
+      emit('submit')
       newUser.email = user.email
     }
 
@@ -34,13 +36,13 @@ export default defineComponent({
 
 <template>
   <h1 data-testid="title">{{ title }}</h1>
-  <form @submit.prevent="submit">
+  <form @submit.prevent>
     Email<br />
     <span data-testid="emailDisplay">{{ newUser.email }}</span>
     <br />
     <input v-model="user.email" data-testid="email" type="email" />
     Password
     <input v-model="user.password" data-testid="password" type="password" />
-    <button>Submit</button>
+    <button @click="submit">Submit</button>
   </form>
 </template>
