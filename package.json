@@ -1,6 +1,6 @@
 {
   "name": "vue3-ts-boilerplate",
-  "version": "0.0.0",
+  "version": "v0.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "vite",

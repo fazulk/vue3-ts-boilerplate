@@ -1,0 +1,5 @@
+feature: ["feature/*", "feat/*"]
+fix: fix/*
+chore: chore/*
+docs: "docs/*"
+styles: ["style/*", "styles/*"]
