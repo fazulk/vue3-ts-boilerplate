@@ -9,21 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
+      - uses: actions/checkout@v2        
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: |
+      - run: |         
          yarn install
          yarn test         
-         git config --global user.name 'fazulk'
-         git config --global user.email 'fazulk@users.noreply.github.com'         
-         yarn version --no-git-tag-version --no-commit-hooks --new-version ${{ github.event.release.tag_name }}
+         git config --global user.name "$USER"
+         git config --global user.email "$USER@users.noreply.github.com"         
+         yarn version --no-git-tag-version --no-commit-hooks --new-version $TAG
          git add .
-         git commit -m 'updated version to ${{ github.event.release.tag_name }}'        
+         git commit -m "updated version to $TAG"        
          git push origin HEAD:main
-         git push origin -f HEAD:${{ github.event.release.tag_name }}
+         git push origin -f HEAD:$TAG
+        env:
+         TAG: ${{ github.event.release.tag_name }}
+         USER: ${{ github.event.repository.owner.login }}
       
