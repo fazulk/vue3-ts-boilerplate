@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/testing-vue3'
+import { composeStories } from '@fazulk/testing-vue3'
 import { render } from '@testing-library/vue'
 
 import * as stories from './login_form.stories'
@@ -20,4 +20,10 @@ test('Displays prop', async () => {
   const { getByTestId } = wrapper
 
   expect(getByTestId('title').textContent).toBe('Some new Title')
+})
+
+test('Runs Interactions as a test', async () => {
+  const { container } = render(HasTitle())
+  if (container instanceof HTMLElement)
+    await HasTitle.play({ canvasElement: container as HTMLElement })
 })

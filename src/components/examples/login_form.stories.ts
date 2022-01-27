@@ -1,5 +1,5 @@
 import { expect } from '@storybook/jest'
-import { getNodeText, screen, userEvent } from '@storybook/testing-library'
+import { getNodeText, userEvent, within } from '@storybook/testing-library'
 import { Story } from '@storybook/vue3'
 
 import LoginForm from './login_form.vue'
@@ -21,15 +21,16 @@ export const NoTitle = Template.bind({})
 
 export const HasTitle = Template.bind({})
 
-HasTitle.play = async () => {
-  await userEvent.type(screen.getByTestId('email'), 'email@provider.com')
-  await userEvent.type(screen.getByTestId('password'), 'a-random-password')
+HasTitle.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  await userEvent.type(canvas.getByTestId('email'), 'email@provider.com')
+  await userEvent.type(canvas.getByTestId('password'), 'a-random-password')
 
-  await expect(getNodeText(screen.getByTestId('emailDisplay'))).toBe('')
+  await expect(getNodeText(canvas.getByTestId('emailDisplay'))).toBe('')
 
-  await userEvent.click(screen.getByRole('button'))
+  await userEvent.click(canvas.getByRole('button'))
 
-  await expect(getNodeText(screen.getByTestId('emailDisplay'))).toBe(
+  await expect(getNodeText(canvas.getByTestId('emailDisplay'))).toBe(
     'email@provider.com'
   )
 }

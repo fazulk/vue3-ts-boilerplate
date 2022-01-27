@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/testing-vue3'
+import { composeStories } from '@fazulk/testing-vue3'
 import { render } from '@testing-library/vue'
 
 import * as stories from './{{ snakeCase componentName }}.stories'
@@ -15,4 +15,10 @@ describe('{{titleCase componentName}}', () => {
 
     expect(getByText('{{pascalCase componentName}}').textContent).toBeTruthy()
   })
+  
+  it('Tests interaction from storybook', async () => {
+    const { container } = render(DefaultState())
+    if (container instanceof HTMLElement)
+      await DefaultState.play({ canvasElement: container as HTMLElement })
+  })    
 })
