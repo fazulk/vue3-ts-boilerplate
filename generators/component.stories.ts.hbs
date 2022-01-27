@@ -1,3 +1,5 @@
+import { expect } from '@storybook/jest'
+import { within } from '@storybook/testing-library'
 import { Story } from '@storybook/vue3'
 
 import {{pascalCase componentName}} from './{{ snakeCase componentName }}.vue'
@@ -17,4 +19,8 @@ const Template: Story = (args) => ({
 
 export const DefaultState = Template.bind({})
 DefaultState.args = {}
+DefaultState.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  await expect(canvas.getAllByText('{{pascalCase componentName}}')[0]).toBeTruthy()
+}
 
