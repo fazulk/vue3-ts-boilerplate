@@ -1,0 +1,32 @@
+name: Post Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  post-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: |
+         yarn install
+         yarn test
+         yarn build      
+         git config --global user.name 'fazulk'
+         git config --global user.email 'fazulk@users.noreply.github.com'
+         git add .
+         git commit -m 'update build for ${{ github.event.release.tag_name }}'      
+         yarn version --no-git-tag-version --no-commit-hooks --new-version ${{ github.event.release.tag_name }}
+         git add .
+         git commit -m 'updated version'        
+         git push origin HEAD:main
+         git push origin -f HEAD:${{ github.event.release.tag_name }}
+      
