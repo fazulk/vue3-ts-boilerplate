@@ -2,6 +2,7 @@
   "name": "vue3-ts-boilerplate",
   "version": "v0.0.1",
   "license": "MIT",
+  "author": "Jeff Fasulkey <fazulk@gmail.com>",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
