@@ -4,24 +4,24 @@
   "license": "MIT",
   "author": "Jeff Fasulkey <fazulk@gmail.com>",
   "scripts": {
-    "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview --port 5050",
-    "typecheck": "vue-tsc --noEmit",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "coverage": "vitest --coverage",
-    "lint": "eslint . --fix",
+    "dev": "vite",
     "generate": "plop",
-    "test": "vitest"
+    "lint": "eslint . --fix",
+    "preview": "vite preview --port 5050",
+    "storybook": "start-storybook -p 6006",
+    "test": "vitest",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "resolutions": {
+    "@types/react": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.1.1.tgz"
   },
   "dependencies": {
     "pinia": "^2.0.6",
     "vue": "^3.2.26",
     "vue-router": "^4.0.12"
-  },
-  "resolutions": {
-    "@types/react": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.1.1.tgz"
   },
   "devDependencies": {
     "@fazulk/testing-vue3": "^0.0.3",
