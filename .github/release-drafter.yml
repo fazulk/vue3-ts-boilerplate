@@ -1,19 +1,26 @@
-name-template: "v$RESOLVED_VERSION"
-tag-template: "v$RESOLVED_VERSION"
+commitish: main
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
 categories:
-  - title: "🚀 Features"
+  - title: '🤖 Dependabot'
+    label: 'dependencies'
+  - title: '🚀 Features'
+    label: 'feature'
+  - title: '🐛 Bug Fixes'
     labels:
-      - "feat"
-      - "feature"
-      - "enhancement"
-  - title: "🐛 Bug Fixes"
-    labels:
-      - "fix"
-      - "bugfix"
-      - "bug"
-  - title: "🧰 Maintenance"
-    label: "chore"
-change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+      - 'fix'
+      - 'bugfix'
+      - 'bug'      
+  - title: '🎉 Release'
+    labels: 
+      - 'release'
+      - 'hotfix'  
+exclude-labels:
+  - 'skip-changelog'
+template: |
+  ## Changes
+
+  $CHANGES
 version-resolver:
   major:
     labels:
@@ -21,11 +28,8 @@ version-resolver:
   minor:
     labels:
       - 'minor'
+      - 'feature'
   patch:
     labels:
       - 'patch'
   default: patch
-template: |
-  ## Changes
-
-  $CHANGES

@@ -1,0 +1,15 @@
+name: PR Changes
+
+on:  
+  pull_request:    
+    types: [opened, reopened, ready_for_review, synchronize, unlabeled, labeled, edited]
+
+
+jobs:
+ 
+  pr-labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TimonVS/pr-labeler-action@v3        
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
