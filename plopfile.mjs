@@ -104,3 +104,4 @@ export default function (plop) {
   buildBaseForComponentViews('view', 'views')
   buildBaseForComponentViews('component', 'components')
 }
+//
