@@ -1,5 +1,5 @@
 const https = require('https')
-
+console.log('node works')
 function getArgs() {
   const args = {}
   process.argv.slice(2, process.argv.length).forEach((arg) => {
@@ -21,6 +21,7 @@ function getArgs() {
   return args
 }
 const args = getArgs()
+console.log('FILE IS WORKING', args.changelog)
 
 const postData = JSON.stringify({
   parent: {
@@ -51,26 +52,26 @@ const postData = JSON.stringify({
   }
 })
 
-const options = {
-  hostname: 'api.notion.com',
-  port: 443,
-  path: '/v1/pages',
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${args.notion_key}`,
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'Notion-Version': '2021-08-16'
-  }
-}
+// const options = {
+//   hostname: 'api.notion.com',
+//   port: 443,
+//   path: '/v1/pages',
+//   method: 'POST',
+//   headers: {
+//     Authorization: `Bearer ${args.notion_key}`,
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json',
+//     'Notion-Version': '2021-08-16'
+//   }
+// }
 
-const req = https.request(options, (res) => {
-  console.log('statusCode:', res.statusCode)
-})
+// const req = https.request(options, (res) => {
+//   console.log('statusCode:', res.statusCode)
+// })
 
-req.on('error', (e) => {
-  console.error(e)
-})
+// req.on('error', (e) => {
+//   console.error(e)
+// })
 
-req.write(postData)
-req.end()
+// req.write(postData)
+// req.end()
