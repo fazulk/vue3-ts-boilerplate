@@ -48,10 +48,11 @@ jobs:
         with:
           release_id: ${{ steps.pre_release.outputs.id }}
 
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: node .github/post_to_notion.js  --changelog=${{ steps.pre_release.outputs.body }} --notion_key=${{ secrets.NOTION_KEY }}                 
+      - run: node ./.github/post_to_notion.js  --changelog=${{ steps.pre_release.outputs.body }} --notion_key=${{ secrets.NOTION_KEY }}                 
                        
       
 
