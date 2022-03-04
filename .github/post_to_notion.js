@@ -32,7 +32,7 @@ const postData = JSON.stringify({
       rich_text: [
         {
           text: {
-            content: args.changelog || 'some shit'
+            content: 'okokokok' || args.changelog || 'some shit'
           }
         }
       ]
@@ -43,7 +43,7 @@ const postData = JSON.stringify({
         {
           type: 'text',
           text: {
-            content: 'Good One asdfJeff'
+            content: 'Good One '
           }
         }
       ]
