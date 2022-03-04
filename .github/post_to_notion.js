@@ -42,7 +42,7 @@ const formatText = (text) => {
           bold: true
         },
         text: {
-          content: result.length ? '\n' + line + '\n\n' : line + '\n\n'
+          content: result.length ? '\n' + line + '\n' : line + '\n'
         }
       })
     } else {
