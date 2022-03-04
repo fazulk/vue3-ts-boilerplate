@@ -76,7 +76,7 @@ if (args.changelog) {
   const postData = JSON.stringify({
     parent: {
       type: 'database_id',
-      database_id: 'd7778df30b5543c587e52b421c26a123'
+      database_id: args.databaseId
     },
     properties: {
       Changelog: {
