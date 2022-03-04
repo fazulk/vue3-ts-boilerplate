@@ -81,7 +81,10 @@ if (args.changelog) {
     properties: {
       'Release Date': {
         date: {
-          start: new Date().toISOString()
+          start: new Date().toLocaleString('en-US', {
+            timeZone: 'America/Los_Angeles',
+            timeZoneName: 'short'
+          })
         }
       },
       Changelog: {
