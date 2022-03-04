@@ -82,12 +82,11 @@ if (args.changelog) {
       'Release Date': {
         date: {
           time_zone: 'America/Los_Angeles',
-          start: new Date(
-            new Date().toLocaleString('en-US', {
-              timeZone: 'America/Los_Angeles',
-              timeZoneName: 'short'
-            })
-          ).toISOString()
+          start: new Date().toISOString()
+          // new Date().toLocaleString('en-US', {
+          //   timeZone: 'America/Los_Angeles',
+          //   timeZoneName: 'short'
+          // })
         }
       },
       Changelog: {
