@@ -1,17 +1,22 @@
 name: Prod CI/CD
 
-on:  
-  pull_request:
-    branches:             
-      - main 
-    types:
-      - closed    
+
+on: 
+  push:
+    branches:
+      - main
+# on:  
+#   pull_request:
+#     branches:             
+#       - main 
+#     types:
+#       - closed    
 
 jobs:
   publish_release:
     name: Tag and Publish
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true    
+    # if: github.event.pull_request.merged == true    
     steps:      
       - uses: actions/checkout@v2  
         with:
@@ -37,11 +42,16 @@ jobs:
          git commit -m "Updated version to ${{ steps.pre_release.outputs.tag_name }}"         
          git push          
 
-      - uses: eregon/publish-release@v1
+      - uses: eregon/publish-release@v1          
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          release_id: ${{ steps.pre_release.outputs.id }}      
+          release_id: ${{ steps.pre_release.outputs.id }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: node .github/post_to_notion.js  --changelog=${{ steps.pre_release.outputs.body }} --notion_key=${{ secrets.NOTION_KEY }}                 
                        
       
 
