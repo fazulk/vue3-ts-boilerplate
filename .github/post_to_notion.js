@@ -72,6 +72,12 @@ const formatText = (text) => {
   return result
 }
 
+function getLocalIsoTime(time, timezone) {
+  return time
+    .toLocaleString('en-CA', { timeZone: timezone, hour12: false })
+    .replace(/, /, 'T')
+}
+
 if (args.changelog) {
   const postData = JSON.stringify({
     parent: {
@@ -82,7 +88,7 @@ if (args.changelog) {
       'Release Date': {
         date: {
           time_zone: 'America/Los_Angeles',
-          start: new Date(new Date().toUTCString()).toISOString()
+          start: getLocalIsoTime(new Date(), 'America/Los_Angeles')
           // new Date().toLocaleString('en-US', {
           //   timeZone: 'America/Los_Angeles',
           //   timeZoneName: 'short'
