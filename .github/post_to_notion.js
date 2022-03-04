@@ -81,6 +81,7 @@ if (args.changelog) {
     properties: {
       'Release Date': {
         date: {
+          time_zone: 'America/Los_Angeles',
           start: new Date(
             new Date().toLocaleString('en-US', {
               timeZone: 'America/Los_Angeles',
