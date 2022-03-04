@@ -79,6 +79,11 @@ if (args.changelog) {
       database_id: args.databaseId
     },
     properties: {
+      'Release Date': {
+        date: {
+          start: new Date().toISOString()
+        }
+      },
       Changelog: {
         rich_text: formatText(args.changelog)
       },
