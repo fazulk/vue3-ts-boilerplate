@@ -89,10 +89,6 @@ if (args.changelog) {
         date: {
           time_zone: 'America/Los_Angeles',
           start: getLocalIsoTime(new Date(), 'America/Los_Angeles')
-          // new Date().toLocaleString('en-US', {
-          //   timeZone: 'America/Los_Angeles',
-          //   timeZoneName: 'short'
-          // })
         }
       },
       Changelog: {
