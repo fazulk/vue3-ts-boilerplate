@@ -22,6 +22,43 @@ function getArgs() {
 }
 const args = getArgs()
 
+const formatText = (text) => {
+  // final array of items to be posted
+  const result = []
+  let currentBody = []
+
+  // split text into lines
+  const lines = text.split('\n')
+
+  // loop through lines
+  lines.forEach((line) => {
+    // if line contains ## convert to bold, otherwise conver to regular text object.
+    if (line.includes('##')) {
+      currentBody.length && result.push(...currentBody)
+      currentBody = []
+      line = line.replace('##', '')
+      result.push({
+        annotations: {
+          bold: true
+        },
+        text: {
+          content: result.length ? '\n' + line + '\n\n' : line + '\n\n'
+        }
+      })
+    } else {
+      if (line) {
+        currentBody.push({
+          text: {
+            content: line + '\n'
+          }
+        })
+      }
+    }
+  })
+
+  return result
+}
+
 if (args.changelog) {
   const postData = JSON.stringify({
     parent: {
@@ -30,13 +67,7 @@ if (args.changelog) {
     },
     properties: {
       Changelog: {
-        rich_text: [
-          {
-            text: {
-              content: args.changelog
-            }
-          }
-        ]
+        rich_text: formatText(args.changelog)
       },
       'Release Name/Version': {
         type: 'title',
