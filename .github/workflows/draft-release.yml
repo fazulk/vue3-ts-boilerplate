@@ -1,11 +1,11 @@
 name: Prod CI/CD
 
 on:  
-  pull_request:
+  push:
     branches:             
       - main 
-    types:
-      - closed    
+    # types:
+    #   - closed    
 
 jobs:
   publish_release:
@@ -22,32 +22,44 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}                     
       
-      - name: Update package.json version
-        uses: jossef/action-set-json-field@v1
-        with:
-          file: package.json
-          field: version
-          value: ${{ steps.pre_release.outputs.tag_name }}        
+      # - name: Update package.json version
+      #   uses: jossef/action-set-json-field@v1
+      #   with:
+      #     file: package.json
+      #     field: version
+      #     value: ${{ steps.pre_release.outputs.tag_name }}        
 
-      - name: commit and push package.json
+      # - name: commit and push package.json
+      #   run: |
+      #    git config user.name github-actions
+      #    git config user.email github-actions@github.com        
+      #    git add -A
+      #    git commit -m "Updated version to ${{ steps.pre_release.outputs.tag_name }}"         
+      #    git push          
+
+      # - uses: eregon/publish-release@v1          
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     release_id: ${{ steps.pre_release.outputs.id }}
+
+      - name: Check object
         run: |
-         git config user.name github-actions
-         git config user.email github-actions@github.com        
-         git add -A
-         git commit -m "Updated version to ${{ steps.pre_release.outputs.tag_name }}"         
-         git push          
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT  
 
-      - uses: eregon/publish-release@v1          
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ steps.pre_release.outputs.id }}
 
       - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: node ./.github/post_to_notion.js  --notion_key=${{ secrets.NOTION_KEY }} --release=${{ steps.pre_release.outputs.tag_name }} --changelog="${{ steps.pre_release.outputs.body }}"                
+      - run: |
+          node ./.github/post_to_notion.js \\
+          --notion_key=${{ secrets.NOTION_KEY }} \\
+          --repo="hamit-quiz" \\          
+          --release=${{ steps.pre_release.outputs.tag_name }} \\
+          --changelog="${{ steps.pre_release.outputs.body }}"                
                        
       
 
