@@ -22,8 +22,6 @@ function getArgs() {
 }
 const args = getArgs()
 
-console.log('CHANGE LOG:', args.changelog)
-
 if (args.changelog) {
   const postData = JSON.stringify({
     parent: {
@@ -40,13 +38,13 @@ if (args.changelog) {
           }
         ]
       },
-      Name: {
+      'Release Name/Version': {
         type: 'title',
         title: [
           {
             type: 'text',
             text: {
-              content: 'Good One '
+              content: args.release
             }
           }
         ]
