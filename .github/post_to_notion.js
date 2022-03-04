@@ -21,7 +21,7 @@ function getArgs() {
   return args
 }
 const args = getArgs()
-console.log('FILE IS WORKING', args.changelog)
+console.log('FILE IS WORKING', JSON.stringify(args.changelog, null, 2))
 
 const postData = JSON.stringify({
   parent: {
