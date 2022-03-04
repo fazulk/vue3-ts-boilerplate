@@ -25,7 +25,7 @@ const args = getArgs()
 const formatText = (text) => {
   // final array of items to be posted
   const result = []
-  let currentBody = []
+  let currentBody = [{ text: { conent: 'Gihub Link: ' + args.repo } }]
 
   // split text into lines
   const lines = text.split('\n')
