@@ -27,8 +27,10 @@ const formatText = (text) => {
   const result = []
   let currentBody = [
     {
-      text: { content: ' GitHub Release:  ' + args.repo },
-      href: 'https://google.com'
+      text: {
+        content: ' GitHub Release:  ' + args.repo,
+        link: { type: 'url', url: 'https://google.com' }
+      }
     }
   ]
 
