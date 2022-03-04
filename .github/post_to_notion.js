@@ -27,9 +27,15 @@ const formatText = (text) => {
   const result = []
   let currentBody = [
     {
+      annotations: {
+        bold: true
+      },
       text: {
-        content: ' GitHub Release:  ' + args.repo,
-        link: { type: 'url', url: 'https://google.com' }
+        content: ' GitHub Release:  ' + args.repo + `/${args.release}` + '\n',
+        link: {
+          type: 'url',
+          url: `https://github.com/${args.repo}/releases/tag/${args.release}`
+        }
       }
     }
   ]

@@ -37,11 +37,11 @@ jobs:
       #    git commit -m "Updated version to ${{ steps.pre_release.outputs.tag_name }}"         
       #    git push          
 
-      # - uses: eregon/publish-release@v1          
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     release_id: ${{ steps.pre_release.outputs.id }}
+      - uses: eregon/publish-release@v1          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.pre_release.outputs.id }}
 
       - name: Check object
         run: |
