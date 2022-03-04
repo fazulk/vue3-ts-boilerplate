@@ -82,7 +82,7 @@ if (args.changelog) {
       'Release Date': {
         date: {
           start: new Date(
-            new Date().toISOString('en-US', {
+            new Date().toLocaleString('en-US', {
               timeZone: 'America/Los_Angeles',
               timeZoneName: 'short'
             })
