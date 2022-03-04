@@ -1,5 +1,5 @@
 const https = require('https')
-console.log('node works')
+
 function getArgs() {
   const args = {}
   process.argv.slice(2, process.argv.length).forEach((arg) => {
@@ -22,55 +22,59 @@ function getArgs() {
 }
 const args = getArgs()
 
-const postData = JSON.stringify({
-  parent: {
-    type: 'database_id',
-    database_id: 'd7778df30b5543c587e52b421c26a123'
-  },
-  properties: {
-    Changelog: {
-      rich_text: [
-        {
-          text: {
-            content: 'okokokok' || args.changelog || 'some shit'
-          }
-        }
-      ]
+console.log('CHANGE LOG:', args.changelog)
+
+if (args.changelog) {
+  const postData = JSON.stringify({
+    parent: {
+      type: 'database_id',
+      database_id: 'd7778df30b5543c587e52b421c26a123'
     },
-    Name: {
-      type: 'title',
-      title: [
-        {
-          type: 'text',
-          text: {
-            content: 'Good One '
+    properties: {
+      Changelog: {
+        rich_text: [
+          {
+            text: {
+              content: args.changelog
+            }
           }
-        }
-      ]
+        ]
+      },
+      Name: {
+        type: 'title',
+        title: [
+          {
+            type: 'text',
+            text: {
+              content: 'Good One '
+            }
+          }
+        ]
+      }
+    }
+  })
+
+  const options = {
+    hostname: 'api.notion.com',
+    port: 443,
+    path: '/v1/pages',
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${args.notion_key}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Notion-Version': '2021-08-16'
     }
   }
-})
 
-const options = {
-  hostname: 'api.notion.com',
-  port: 443,
-  path: '/v1/pages',
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${args.notion_key}`,
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'Notion-Version': '2021-08-16'
-  }
+  const req = https.request(options, (res) => {
+    console.log('statusCode:', res.statusCode)
+  })
+
+  req.on('error', (e) => {
+    console.error(e)
+  })
+
+  req.write(postData)
+  req.end()
 }
-
-const req = https.request(options, (res) => {
-  console.log('statusCode:', res.statusCode)
-})
-
-req.on('error', (e) => {
-  console.error(e)
-})
-
-req.write(postData)
-req.end()
