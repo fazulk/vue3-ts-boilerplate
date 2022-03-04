@@ -1,6 +1,6 @@
 {
   "name": "vue3-ts-boilerplate",
-  "version": "v0.1.14",
+  "version": "v0.1.15",
   "license": "MIT",
   "author": "Jeff Fasulkey <fazulk@gmail.com>",
   "scripts": {
