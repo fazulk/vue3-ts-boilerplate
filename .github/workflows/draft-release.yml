@@ -1,17 +1,17 @@
 name: Prod CI/CD
 
 on:  
-  push:
+  pull_request:
     branches:             
       - main 
-    # types:
-    #   - closed    
+    types:
+      - closed    
 
 jobs:
   publish_release:
     name: Tag and Publish
     runs-on: ubuntu-latest
-    # if: github.event.pull_request.merged == true    
+    if: github.event.pull_request.merged == true    
     steps:      
       - uses: actions/checkout@v2  
         with:
@@ -22,20 +22,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}                     
       
-      # - name: Update package.json version
-      #   uses: jossef/action-set-json-field@v1
-      #   with:
-      #     file: package.json
-      #     field: version
-      #     value: ${{ steps.pre_release.outputs.tag_name }}        
+      - name: Update package.json version
+        uses: jossef/action-set-json-field@v1
+        with:
+          file: package.json
+          field: version
+          value: ${{ steps.pre_release.outputs.tag_name }}        
 
-      # - name: commit and push package.json
-      #   run: |
-      #    git config user.name github-actions
-      #    git config user.email github-actions@github.com        
-      #    git add -A
-      #    git commit -m "Updated version to ${{ steps.pre_release.outputs.tag_name }}"         
-      #    git push          
+      - name: commit and push package.json
+        run: |
+         git config user.name github-actions
+         git config user.email github-actions@github.com        
+         git add -A
+         git commit -m "Updated version to ${{ steps.pre_release.outputs.tag_name }}"         
+         git push          
 
       - uses: eregon/publish-release@v1          
         env:
@@ -43,18 +43,18 @@ jobs:
         with:
           release_id: ${{ steps.pre_release.outputs.id }}
 
-      - name: Check object
-        run: |
-          cat << OBJECT
-          ${{ toJson(github) }}
-          OBJECT  
+      # - name: Check object
+      #   run: |
+      #     cat << OBJECT
+      #     ${{ toJson(github) }}
+      #     OBJECT  
 
 
-      - uses: actions/checkout@v2  
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: node ./.github/post_to_notion.js --notion_key=${{ secrets.NOTION_KEY }} --databaseId="${{ secrets.NOTION_CHANGELOG_DB }}" --repo="${{ github.repository }}" --release=${{ steps.pre_release.outputs.tag_name }} --changelog="${{ steps.pre_release.outputs.body }}"                
+      # - uses: actions/checkout@v2  
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '14'
+      # - run: node ./.github/post_to_notion.js --notion_key=${{ secrets.NOTION_KEY }} --databaseId="${{ secrets.NOTION_CHANGELOG_DB }}" --repo="${{ github.repository }}" --release=${{ steps.pre_release.outputs.tag_name }} --changelog="${{ steps.pre_release.outputs.body }}"                
                        
       
 
