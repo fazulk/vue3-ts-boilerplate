@@ -75,3 +75,4 @@ const postData = JSON.stringify({
 
 // req.write(postData)
 // req.end()
+process.exit()
